@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 
 import org.opencv.android.BaseLoaderCallback;
@@ -63,7 +64,8 @@ public class FdActivity extends Activity {
 
                     // Load native library after(!) OpenCV initialization
                     System.loadLibrary("opencv_java3");
-                    System.loadLibrary("detection_based_tracker");
+                    //System.loadLibrary("detection_based_tracker"); // 替换成下面这个
+                    System.loadLibrary("native-lib");
 
                     try {
                         // load cascade file from application resources
@@ -125,9 +127,9 @@ public class FdActivity extends Activity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         setContentView(R.layout.face_detect_surface_view);
-
         mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.fd_activity_surface_view);
         mOpenCvCameraView.setVisibility(CameraBridgeViewBase.VISIBLE);
+        mOpenCvCameraView.setCameraIndex(CameraBridgeViewBase.CAMERA_ID_FRONT);//前置摄像头 CameraBridgeViewBase.CAMERA_ID_BACK为后置摄像头
         mOpenCvCameraView.setCvCameraViewListener(new CvCameraViewListener2() {
             @Override
             public void onCameraViewStarted(int width, int height) {

@@ -18,6 +18,9 @@ android {
                 dirs 'libs' //this way we can find the .aar file in libs folder
             }
         }
+        debug {
+            jniDebuggable true
+        }
     }
 }
 dependencies {

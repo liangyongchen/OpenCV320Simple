@@ -3,8 +3,8 @@ cmake_minimum_required(VERSION 3.4.1)
 
 set(CMAKE_VERBOSE_MAKEFILE on)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
-#配置加载native依赖 // E:\opencv\OpenCV-android-sdk\sdk
-include_directories(../../OpenCV-android-sdk/sdk/native/jni/include)
+#配置加载native依赖
+include_directories(../opencv320-sdk/native/jni/include)
 #动态方式加载
 add_library(lib_opencv STATIC IMPORTED ) #表示创建一个导入库，静态方式
 #引入libopencv_java3.so文件
